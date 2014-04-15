@@ -1,0 +1,273 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Arial";
+}
+body{
+    background-color:#1a1a1a;
+}
+.logoname,.tagline,.nav,.title{
+    position: absolute;
+    width:100%;
+    font-family: "Monotype Corsiva";
+    text-align:center;
+}
+.logoname{
+    font-size: 45px;
+    font-weight:bold;
+    color: white;
+    top: 125px;
+    z-index: 43;
+}
+div.qod{
+    width:100%;
+    color:white;
+    font-size:17px;
+    position:absolute;
+    bottom:0px;
+    text-align: center;
+}
+div.qod div.serp{
+    bottom: 100%;
+}
+div.qod span.quote{
+    display:block;
+    text-align: left;
+    font-family: "Monotype Corsiva";
+    padding:4% 0 0 4%;
+    height:42px;
+    overflow:hidden;
+}
+div.qod span.author{
+    float:right;
+    font-size:15px;
+    font-family: "Monotype Corsiva";
+    padding: 0 6% 4% 0;
+    color:#ccc;
+}
+b{
+    font-family: "Monotype Corsiva";
+    color:#f84a4a;
+}
+.tagline{
+    font-size: 21px;
+    font-family: "Arial";
+    color: rgb( 249, 247, 247 );
+    top: 180px;;
+}
+div.cupromise,div.oldpromise,div.addpromise{
+    display:none;
+    color:white;
+}
+div.nav{
+    font-family: "Monotype Corsiva";
+    font-weight:bold;
+    top:85px;
+    font-size:32px;
+}
+div.left{
+    background:url(../img/left.png) no-repeat;
+    left: 62px;
+}
+div.right{
+    background:url(../img/right.png) no-repeat;
+    right:62px;
+}
+div.left,div.right{
+    top:8px;
+    background-size: 100%;
+    height: 25px;
+    position: absolute;
+    width: 25px;
+    z-index:100;
+}
+div.cupromise div.nav b{
+    color:#d62f2f;
+}
+div.oldpromise div.nav b{
+    color:#eccf30;
+}
+div.addpromise div.nav b{
+    color:#1aa413;
+}
+div.serp{
+    background-color:#aaa;
+    width:95%;
+    height:2px;
+    border-radius:1px;
+    position:absolute;
+    left:2.5%;
+    bottom:150px;
+}
+div.showpromise,div.editbox,div.histories{
+    position: absolute;
+    top: 165px;
+    width: 80%;
+    left: 10%;
+    height: 225px;
+}
+div.timeinfo{
+    position:absolute;
+    bottom:35px;
+    width:95%;
+    height:100px;
+    font-family: arial;
+    font-size: 14px;
+}
+div.ddl,div.remain{
+    width: 90%;
+    left: 5%;
+    position: absolute;
+}
+div.remain{
+    top:26px;
+}
+span.name{
+    float:left;
+}
+span.time b{
+    font-family: arial;
+}
+span.time{
+    float:right;
+}
+div.button{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:45px;
+}
+div.button div{
+    float:left;
+}
+div.sorry,div.mdone{
+    width:50%;
+    font-family: "Arial";
+    font-weight: bold;
+    text-align:center;
+    color:white;
+    cursor:pointer;
+}
+div.sorry{
+    color:#ec4448;
+}
+div.setddl,div.save,div.savetime{
+    position:absolute;
+    width:100%;
+    text-align:center;
+}
+div.setddl{
+    bottom:130px;
+    font-size:20px;
+    color:#56be22;
+    cursor:pointer;
+}
+input#theddl{
+    display:none;
+    height:22px;
+}
+div.save,div.clear{
+    bottom:50px;
+    font-size:28px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+div.savetime{
+    bottom:100px;
+    font-size:14px;
+    color:white;
+}
+div.savetime span{
+    color:#1df51d;
+    font-size:20px;
+    padding-left:20px;
+}
+div.clear{
+    bottom:20px;
+    position:absolute;
+    width:50%;
+    right:20px;
+    text-align:right;
+    font-size:22px;
+    color:#e14c5d;
+}
+textarea{
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 13px;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border:0px;
+    overflow:hidden;
+}
+ul.items{
+    width:100%;
+    font-size:15px;
+}
+li{
+    position:relative;
+    height:38px;
+    list-style:none;
+}
+div.summary{
+    width: 80%;
+    height: 20px;
+    position: absolute;
+    top: 18px;
+    color:#A5A2A2;
+    font-size:12px;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+li span{
+    float:left;
+}
+li span:nth-child(2){
+    float:right;
+    text-transform:uppercase;
+}
+.done{
+    color:#1df51d;
+}
+.delay{
+    color:#a9af06;
+}
+.fail{
+    color:#af3e06;
+}
+.twoday{
+    color:#a4f16b;
+}
+.oneday{
+    color:#eff16b;
+}
+.halfday{
+    color:#f1b06b;
+}
+.soon{
+    color:#f1776b;
+}
+.long{
+    color:#2fe161;
+}
+b.fail:before{
+    content:"-";
+}
+div.done{
+    background-color:#1df51d;
+}
+div.fail{
+    background-color:#af3e06;
+}
+div.delay{
+    background-color:#a9af06;
+}
+div.done,div.fail,div.delay{
+    width:100%;
+    position:absolute;
+    top:7px;
+    height:1px;
+}
