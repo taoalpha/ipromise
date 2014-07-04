@@ -17,10 +17,14 @@ $(document).ready(function(){
                 $('div.loading').fadeOut(500).siblings('div.addpromise').fadeIn(800);
             }
         });
-    }, 6000);
+    }, 3000);
     $('div.setddl').on('click',function(){
         $('span.settext').text("");
         $('input#theddl').show();
+    });
+    $('div.helpuse').on('click',function(){
+      $(this).hide();
+      $('#newpromise').css('display','block')
     });
     $('div.save').on('click',function(){
         var cupromise = {};
@@ -119,7 +123,14 @@ $(document).ready(function(){
     },60000);
 });
 function showcur(kk){
-    $('div.showpromise').html(kk.content.replace(/\n/g,"\<br\>"));
+    // parse some special formation:
+    if(kk.content.indexOf("MD:")==0){
+      var converter = new Markdown.Converter(),
+          markdownToHtml = converter.makeHtml;
+      $('div.showpromise').html(markdownToHtml(kk.content.replace("MD:","")));
+    }else{
+      $('div.showpromise').html(kk.content.replace(/\n/g,"\<br\>"));
+    }
     $('div.ddl span.time').text(kk.deadline);
     var remaintime =Date.parse(kk.deadline)-Date.parse(Date());
     if(remaintime>3*days){

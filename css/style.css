@@ -1,273 +1,412 @@
 *{
-    margin:0px;
-    padding:0px;
-    font-family: "Arial";
+  /* margin:0px;
+  padding:0px; */
+  font-family: "Arial";
 }
 body{
-    background-color:#1a1a1a;
+  background-color:#1a1a1a;
 }
 .logoname,.tagline,.nav,.title{
-    position: absolute;
-    width:100%;
-    font-family: "Monotype Corsiva";
-    text-align:center;
+  position: absolute;
+  width:100%;
+  font-family: "Monotype Corsiva";
+  text-align:center;
+  padding-top: 5px;
+  left:0;
 }
 .logoname{
-    font-size: 45px;
-    font-weight:bold;
-    color: white;
-    top: 125px;
-    z-index: 43;
+  font-size: 45px;
+  font-weight:bold;
+  color: white;
+  top: 125px;
+  z-index: 43;
 }
 div.qod{
-    width:100%;
-    color:white;
-    font-size:17px;
-    position:absolute;
-    bottom:0px;
-    text-align: center;
+  width:100%;
+  color:white;
+  font-size:17px;
+  position:absolute;
+  bottom:0px;
+  text-align: center;
+  left:0;
 }
 div.qod div.serp{
-    bottom: 100%;
+  bottom: 100%;
 }
 div.qod span.quote{
-    display:block;
-    text-align: left;
-    font-family: "Monotype Corsiva";
-    padding:4% 0 0 4%;
-    height:42px;
-    overflow:hidden;
+  display:block;
+  text-align: left;
+  font-family: "Monotype Corsiva";
+  padding:4% 0 0 3%;
+  height:42px;
+  overflow:scroll;
+  font-size: 14px;
 }
 div.qod span.author{
-    float:right;
-    font-size:15px;
-    font-family: "Monotype Corsiva";
-    padding: 0 6% 4% 0;
-    color:#ccc;
+  float:right;
+  font-size:15px;
+  font-family: "Monotype Corsiva";
+  padding: 0 4% 4% 0;
+  color:#ccc;
 }
 b{
-    font-family: "Monotype Corsiva";
-    color:#f84a4a;
+  font-family: "Monotype Corsiva";
+  color:#f84a4a;
 }
 .tagline{
-    font-size: 21px;
-    font-family: "Arial";
-    color: rgb( 249, 247, 247 );
-    top: 180px;;
+  font-size: 21px;
+  font-family: "Arial";
+  color: rgb( 249, 247, 247 );
+  top: 180px;;
 }
 div.cupromise,div.oldpromise,div.addpromise{
-    display:none;
-    color:white;
+  display:none;
+  color:white;
 }
 div.nav{
-    font-family: "Monotype Corsiva";
-    font-weight:bold;
-    top:85px;
-    font-size:32px;
+  font-family: "Monotype Corsiva";
+  font-weight:bold;
+  top:85px;
+  font-size:32px;
+  left:0;
 }
 div.left{
-    background:url(../img/left.png) no-repeat;
-    left: 62px;
+  background:url(../img/left.png) no-repeat;
+  left: 62px;
 }
 div.right{
-    background:url(../img/right.png) no-repeat;
-    right:62px;
+  background:url(../img/right.png) no-repeat;
+  right:62px;
 }
 div.left,div.right{
-    top:8px;
-    background-size: 100%;
-    height: 25px;
-    position: absolute;
-    width: 25px;
-    z-index:100;
+  top:8px;
+  background-size: 100%;
+  height: 25px;
+  position: absolute;
+  width: 25px;
+  z-index:100;
 }
 div.cupromise div.nav b{
-    color:#d62f2f;
+  color:#d62f2f;
 }
 div.oldpromise div.nav b{
-    color:#eccf30;
+  color:#eccf30;
 }
 div.addpromise div.nav b{
-    color:#1aa413;
+  color:#1aa413;
 }
 div.serp{
-    background-color:#aaa;
-    width:95%;
-    height:2px;
-    border-radius:1px;
-    position:absolute;
-    left:2.5%;
-    bottom:150px;
+  background-color:#aaa;
+  width:95%;
+  height:2px;
+  border-radius:1px;
+  position:absolute;
+  left:2.5%;
+  bottom:150px;
+}
+div.showpromise{
+  font-size:13px;
 }
 div.showpromise,div.editbox,div.histories{
-    position: absolute;
-    top: 165px;
-    width: 80%;
-    left: 10%;
-    height: 225px;
+  position: absolute;
+  top: 145px;
+  width: 80%;
+  left: 10%;
+  height: 255px;
+  overflow:scroll;
 }
 div.timeinfo{
-    position:absolute;
-    bottom:35px;
-    width:95%;
-    height:100px;
-    font-family: arial;
-    font-size: 14px;
+  position:absolute;
+  bottom:35px;
+  width:95%;
+  height:100px;
+  font-family: arial;
+  font-size: 14px;
 }
 div.ddl,div.remain{
-    width: 90%;
-    left: 5%;
-    position: absolute;
+  width: 90%;
+  left: 5%;
+  position: absolute;
 }
 div.remain{
-    top:26px;
+  top:26px;
 }
 span.name{
-    float:left;
+  float:left;
 }
 span.time b{
-    font-family: arial;
+  font-family: arial;
 }
 span.time{
-    float:right;
+  float:right;
 }
 div.button{
-    position:absolute;
-    bottom:0px;
-    width:100%;
-    height:45px;
+  position:absolute;
+  bottom:0px;
+  width:100%;
+  height:45px;
 }
 div.button div{
-    float:left;
+  float:left;
 }
 div.sorry,div.mdone{
-    width:50%;
-    font-family: "Arial";
-    font-weight: bold;
-    text-align:center;
-    color:white;
-    cursor:pointer;
+  width:50%;
+  font-family: "Arial";
+  font-weight: bold;
+  text-align:center;
+  color:white;
+  cursor:pointer;
 }
 div.sorry{
-    color:#ec4448;
+  color:#ec4448;
 }
 div.setddl,div.save,div.savetime{
-    position:absolute;
-    width:100%;
-    text-align:center;
+  position:absolute;
+  width:100%;
+  text-align:center;
+  left:0;
 }
 div.setddl{
-    bottom:130px;
-    font-size:20px;
-    color:#56be22;
-    cursor:pointer;
+  bottom:110px;
+  font-size:20px;
+  color:#56be22;
+  cursor:pointer;
 }
 input#theddl{
-    display:none;
-    height:22px;
+  display:none;
+  height:22px;
 }
 div.save,div.clear{
-    bottom:50px;
-    font-size:28px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+  bottom:50px;
+  font-size:28px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 div.savetime{
-    bottom:100px;
-    font-size:14px;
-    color:white;
+  bottom:100px;
+  font-size:14px;
+  color:white;
 }
 div.savetime span{
-    color:#1df51d;
-    font-size:20px;
-    padding-left:20px;
+  color:#1df51d;
+  font-size:20px;
+  padding-left:20px;
 }
 div.clear{
-    bottom:20px;
-    position:absolute;
-    width:50%;
-    right:20px;
-    text-align:right;
-    font-size:22px;
-    color:#e14c5d;
+  bottom:20px;
+  position:absolute;
+  width:50%;
+  right:20px;
+  text-align:right;
+  font-size:22px;
+  color:#e14c5d;
 }
 textarea{
-    background-color: #1a1a1a;
-    color: white;
-    font-size: 13px;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    border:0px;
-    overflow:hidden;
+  display:none;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border:0px;
+  overflow:scroll;
 }
-ul.items{
-    width:100%;
-    font-size:15px;
+div.oldpromise ul.items{
+  margin:0;
+  padding:0;
+  width:100%;
+  font-size:15px;
 }
-li{
-    position:relative;
-    height:38px;
-    list-style:none;
+div.oldpromise li{
+  margin:0;
+  padding:0;
+  position:relative;
+  height:38px;
+  list-style:none;
 }
 div.summary{
-    width: 80%;
-    height: 20px;
-    position: absolute;
-    top: 18px;
-    color:#A5A2A2;
-    font-size:12px;
-    white-space: nowrap;
-    text-overflow:ellipsis;
-    overflow:hidden;
+  width: 80%;
+  height: 20px;
+  position: absolute;
+  top: 18px;
+  color:#A5A2A2;
+  font-size:12px;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
 }
-li span{
-    float:left;
+div.oldpromise li span{
+  float:left;
 }
-li span:nth-child(2){
-    float:right;
-    text-transform:uppercase;
+div.oldpromise li span:nth-child(2){
+  float:right;
+  text-transform:uppercase;
 }
 .done{
-    color:#1df51d;
+  color:#1df51d;
 }
 .delay{
-    color:#a9af06;
+  color:#a9af06;
 }
 .fail{
-    color:#af3e06;
+  color:#af3e06;
 }
 .twoday{
-    color:#a4f16b;
+  color:#a4f16b;
 }
 .oneday{
-    color:#eff16b;
+  color:#eff16b;
 }
 .halfday{
-    color:#f1b06b;
+  color:#f1b06b;
 }
 .soon{
-    color:#f1776b;
+  color:#f1776b;
 }
 .long{
-    color:#2fe161;
+  color:#2fe161;
 }
 b.fail:before{
-    content:"-";
+  content:"-";
 }
 div.done{
-    background-color:#1df51d;
+  background-color:#1df51d;
 }
 div.fail{
-    background-color:#af3e06;
+  background-color:#af3e06;
 }
 div.delay{
-    background-color:#a9af06;
+  background-color:#a9af06;
 }
 div.done,div.fail,div.delay{
-    width:100%;
-    position:absolute;
-    top:7px;
-    height:1px;
+  width:100%;
+  position:absolute;
+  top:7px;
+  height:1px;
+}
+h1,h2,h3,h4,h5,h6,p,blockquote {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #fff;
+  /* background-color: #282a36; */
+  margin: 10px 13px 10px 13px;
+}
+div.cupromise ul,div.addpromise ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  margin-top:0;
+}
+div.cupromise li ul,div.addpromise li ul {
+  padding-left: 20px;
+}
+div.cupromise ul li,div.addpromise ul li{
+  list-style:none;
+}
+div.cupromise ul li:before,div.addpromise ul li:before {
+  content: "* ";
+  color: #FFFF00;
+  padding-right: .2em;
+  font-size: 1.5em;
+  vertical-align: -0.34em;
+}
+a {
+  color: #59acf3;
+}
+a:hover {
+  color: #a7d8ff;
+  text-decoration: none;
+}
+a img {
+  border: none;
+}
+p {
+  margin-bottom: 9px;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: #8D7CD2;
+  line-height: 36px;
+}
+h1 {
+  font-style: bold;
+  font-size: 1.5em;
+}
+h2 {
+  font-style: bold;
+  font-size: 1em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+h4 {
+  font-size: .875em;
+}
+
+h5 {
+  font-size: .75em;
+}
+
+h6 {
+  font-size: .6875em;
+}
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+blockquote {
+  padding: 13px 13px 21px 15px;
+  margin-bottom: 18px;
+  font-family: georgia,serif;
+  font-style: italic;
+}
+blockquote:before {
+  content: "C";
+  font-size: 40px;
+  margin-left: -10px;
+  font-family: georgia,serif;
+  color: #eee;
+}
+blockquote p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+code, pre {
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+  color: #ff4a14;
+  padding: 1px 3px;
+  font-size: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+pre {
+  display: block;
+  padding: 14px;
+  margin: 0 0 18px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #bf370f;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+pre code {
+  background-color: #282a36;
+  color: #ff4a14;
+  font-size: 11px;
+  padding: 0;
 }

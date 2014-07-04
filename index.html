@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
     <script type="text/javascript" src='js/jquery-1.10.1.min.js'></script>
     <script type="text/javascript" src='js/jquery.blockUI.js'></script>
+    <script type="text/javascript" src='js/markdown.js'></script>
     <script type="text/javascript" src='js/main.js'></script>
 </head>
 <body>
@@ -17,8 +18,8 @@
         <div class="tagline">Keep words,Chase Dreams.</div>
         <div class="qod">
         <div class="serp"></div>
-            <span class="quote">Now I understand the meaning of "THE MOD SQUAD"!</span>
-            <span class="author">John Doe</span>
+            <span class="quote"></span>
+            <span class="author"></span>
         </div>
     </div>
     <div class="cupromise">
@@ -51,7 +52,27 @@
             <div class="right"></div>
         </div>
         <div class="editbox">
-            <textarea id="newpromise">Write down what your want to promise and try your best to accomplish it, and one promise one time. &#13;&#10;&#13;&#10;  - Specific; &#13;&#10;  - Measurable; &#13;&#10;  - Attainable; &#13;&#10;  - Relevant; &#13;&#10;  - Time-based;</textarea>
+            <div class="helpuse">
+              <h2>How to use iPromise?</h2>
+              <ul>
+                <li>Basic:
+                <ul><li>Write down what your want to promise and try your best to accomplish it -- one promise one time. </li>
+                <li>Set a deadline for it and keep it, iPromise will countdown for you.</li></ul></li>
+                <li>Advance:
+                <ul><li>Support markdown syntax--Just start with <code>MD:</code> and a blank line; </li>
+                <li>Make your promise looks good and loveful;</li></ul></li>
+              </ul>
+              <p>Any advice, please <a href="mailto%3azzgary92@gmail.com">Email me</a> .</p>
+            </div>
+            <textarea id="newpromise">MD:&#13;&#10;##How to use iPromise?
+* Basic:
+    *  Write down what your want to promise and try your best to accomplish it -- one promise one time.
+    *  Set a deadline for it and keep it, iPromise will countdown for you.
+* Advance:
+    *  Support markdown syntax--Just start with `MD:` and a blank line;
+    *  Make your promise looks good and loveful;
+
+Any advice, please [Email me](mailto:zzgary92@gmail.com) .</textarea>
         </div>
         <div class="setddl">
             <span class="settext">Set A Deadline</span>
