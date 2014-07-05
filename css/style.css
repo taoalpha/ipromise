@@ -66,7 +66,7 @@ div.cupromise,div.oldpromise,div.addpromise{
 div.nav{
   font-family: "Monotype Corsiva";
   font-weight:bold;
-  top:85px;
+  top:50px;
   font-size:32px;
   left:0;
 }
@@ -109,10 +109,10 @@ div.showpromise{
 }
 div.showpromise,div.editbox,div.histories{
   position: absolute;
-  top: 145px;
+  top: 105px;
   width: 80%;
   left: 10%;
-  height: 255px;
+  height: 275px;
   overflow:scroll;
 }
 div.timeinfo{
@@ -167,17 +167,13 @@ div.setddl,div.save,div.savetime{
   left:0;
 }
 div.setddl{
-  bottom:110px;
+  bottom:125px;
   font-size:20px;
-  color:#56be22;
+  color:#999;
   cursor:pointer;
 }
-input#theddl{
-  display:none;
-  height:22px;
-}
 div.save,div.clear{
-  bottom:50px;
+  bottom:68px;
   font-size:28px;
   color:white;
   font-weight:bold;
@@ -294,8 +290,6 @@ body {
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  color: #fff;
-  /* background-color: #282a36; */
   margin: 10px 13px 10px 13px;
 }
 div.cupromise ul,div.addpromise ul {

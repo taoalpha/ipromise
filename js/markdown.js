@@ -496,6 +496,8 @@ else
             text = pluginHooks.preBlockGamut(text, blockGamutHookCallback);
 
             text = _DoHeaders(text);
+            // DONE: add a _DoCheckbox
+            text = _DoCheckboxs(text);
 
             // Do Horizontal Rules:
             var replacement = "<hr />\n";
@@ -823,6 +825,23 @@ else
             result += " />";
 
             return result;
+        }
+
+        function _DoCheckboxs(text) {
+
+          //FIXME: deal with the content in []!!
+            text = text.replace(/\[([ \tx]?)\](.+?)[ \t]*\n+/gm,
+                function (wholeMatch,m1,m2) {
+                    if(m1 == 'x'){
+                      return "<input type=checkbox checked>" + m2 +"\n";
+                    }else if(m1==' ' || m1 == ''){
+                      return "<input type=checkbox>" + m2 +"\n";
+                    }else{
+                      return wholeMatch;
+                    }
+                }
+              );
+            return text;
         }
 
         function _DoHeaders(text) {
