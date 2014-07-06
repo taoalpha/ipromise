@@ -5,6 +5,7 @@
 }
 body{
   background-color:#1a1a1a;
+  min-height:568px;
 }
 .logoname,.tagline,.nav,.title{
   position: absolute;
@@ -167,13 +168,13 @@ div.setddl,div.save,div.savetime{
   left:0;
 }
 div.setddl{
-  bottom:125px;
+  /* bottom:125px; */
   font-size:20px;
   color:#999;
   cursor:pointer;
 }
 div.save,div.clear{
-  bottom:68px;
+  /* bottom:68px; */
   font-size:28px;
   color:white;
   font-weight:bold;

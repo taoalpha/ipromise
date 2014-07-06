@@ -5,15 +5,27 @@ minutes=1000*60;
 hours=minutes*60;
 days=hours*24;
 years=days*365;
-if(typeof chrome.storage !="undefined"){
+flagpart = !(typeof chrome =="undefined" || typeof chrome.storage =="undefined");
+if(flagpart){
   storage = chrome.storage.local;
 }else{
   storage = $.localStorage;
 }
 $(document).ready(function(){
+    if($(window).width()>500){
+        var popUp = window.open('index.html', 'newwindow', 'height=568, width=320, top=50, left=500, toolbar=no, menubar=no, resizable=no,location=no, status=no');
+        if (popUp == null || typeof(popUp)=='undefined') {
+            // alert('Please disable your pop-up blocker and click the "Open" link again.');
+        }
+        else {
+            popUp.focus();
+        }
+    }
+    $('div.setddl').css('top',$(document).height()-175);
+    $('div.save').css('top',$(document).height()-88);
     showquotes();
     setTimeout(function() {
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             if(data.currentpromise){
                 $('div.loading').fadeOut(500).siblings('div.cupromise').fadeIn(800);
@@ -57,7 +69,7 @@ $(document).ready(function(){
     $('div.showpromise').on('click','input',function(){
       var mark = ($(this).prop('checked'))?1:0;
       var imark = $('input').index($(this));
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("marks", function(data) {
           if(Object.keys(data).length==0){
             data[imark] = mark;
@@ -82,7 +94,7 @@ $(document).ready(function(){
     });
     // mark done
     $('div.mdone').on('click',function(){
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             kk = data.currentpromise;
             if(Date.parse(kk.deadline)-Date.parse(Date())>=0){
@@ -123,7 +135,7 @@ $(document).ready(function(){
       storage.remove("marks");
     });
     $('div.sorry').on('click',function(){
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             var kk = data.currentpromise;
             kk.status = "fail";
@@ -159,7 +171,7 @@ $(document).ready(function(){
         showhis();
     });
     $('div.oldpromise').on('click','div.right,div.left',function(){
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             if(data.currentpromise){
                 $('div.oldpromise').fadeOut(500).siblings('div.cupromise').fadeIn(800);
@@ -177,7 +189,7 @@ $(document).ready(function(){
       }
     });
     $('div.addpromise').on('click','div.right,div.left',function(){
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             if(data.currentpromise){
                 $('div.addpromise').fadeOut(500).siblings('div.cupromise').fadeIn(800);
@@ -197,7 +209,7 @@ $(document).ready(function(){
       }
     });
     $('div.clear').on('click',function(){
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.remove("historypromise", function() {
             console.log('Cleared all histories.')
             showhis();
@@ -210,7 +222,7 @@ $(document).ready(function(){
     //TODO: add review for history item.
     $('div.histories').on('click','ul.items li',function(){
         $('div.review').show();
-        if(typeof chrome.storage !="undefined"){
+        if(flagpart){
           storage.get("historypromise", function(data) {
               var his = data.historypromise;
 
@@ -221,7 +233,7 @@ $(document).ready(function(){
     });
     // update the ddl time information
     setInterval(function() {
-      if(typeof chrome.storage !="undefined"){
+      if(flagpart){
         storage.get("currentpromise", function(data) {
             if(data.currentpromise){
                 showcur(data.currentpromise);
@@ -272,7 +284,7 @@ function showthis(remaintime,flag){
 }
 // show marks after load all data
 function showmarks(){
-  if(typeof chrome.storage !="undefined"){
+  if(flagpart){
     storage.get("marks", function(data) {
       $.each(data.marks,function(i,v){
           $('input').eq(parseInt(i)).prop('checked',((v==1)? true:false));
@@ -287,7 +299,7 @@ function showmarks(){
 }
 function showhis(){
     $('ul.items').empty();
-    if(typeof chrome.storage !="undefined"){
+    if(flagpart){
       storage.get("historypromise", function(data) {
           var his = data.historypromise;
           var savedtime = 0;
@@ -345,7 +357,7 @@ function showpop(mes){
     setTimeout($.unblockUI, 2000);
 }
 function showquotes(){
-  if(typeof chrome.storage !="undefined"){
+  if(flagpart){
     storage.get("dailyquote", function(data) {
         if(data.dailyquote && (Date.parse(Date())-Date.parse(data.dailyquote.gettime))<days){
             var quote = data.dailyquote;
