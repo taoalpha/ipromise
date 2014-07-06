@@ -103,7 +103,7 @@ div.serp{
   border-radius:1px;
   position:absolute;
   left:2.5%;
-  bottom:150px;
+  /* bottom:150px; */
 }
 div.showpromise{
   font-size:13px;
@@ -118,7 +118,7 @@ div.showpromise,div.editbox,div.histories{
 }
 div.timeinfo{
   position:absolute;
-  bottom:35px;
+  /* bottom:35px; */
   width:95%;
   height:100px;
   font-family: arial;
@@ -143,7 +143,7 @@ span.time{
 }
 div.button{
   position:absolute;
-  bottom:0px;
+  /* bottom:0px; */
   width:100%;
   height:45px;
 }
@@ -181,7 +181,7 @@ div.save,div.clear{
   cursor:pointer;
 }
 div.savetime{
-  bottom:100px;
+  /* bottom:100px; */
   font-size:14px;
   color:white;
 }
@@ -191,7 +191,7 @@ div.savetime span{
   padding-left:20px;
 }
 div.clear{
-  bottom:20px;
+  /* bottom:20px; */
   position:absolute;
   width:50%;
   right:20px;

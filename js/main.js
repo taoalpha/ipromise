@@ -23,6 +23,12 @@ $(document).ready(function(){
     }
     $('div.setddl').css('top',$(document).height()-175);
     $('div.save').css('top',$(document).height()-88);
+    $('div.timeinfo').css('top',$(document).height()-130);
+    $('div.cupromise div.serp').css('top',$(document).height()-142);
+    $('div.button').css('top',$(document).height()-55);
+    $('div.clear').css('top',$(document).height()-45);
+    $('div.savetime').css('top',$(document).height()-135);
+
     showquotes();
     setTimeout(function() {
       if(flagpart){
@@ -158,8 +164,9 @@ $(document).ready(function(){
         kk.status = "fail";
         kk.closetime = Date();
         var his = storage.get("historypromise");
-        if(his == null){his = []};
-        his.push(kk);
+        if(his == null){his = {}};
+        var i = Object.keys(his).length;
+        his[i] = kk;
         storage.set({"historypromise":his});
         storage.remove("currentpromise");
         $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
