@@ -159,8 +159,7 @@ div.sorry{
 }
 div.hoverlayer,div.notiflayer{
   position:fixed;
-  width:96%;
-  left:2%;
+  width:100%;
   font-size:15px;
   min-height:100%;
   background-color:rgba(0,0,0,0.9);
@@ -175,8 +174,6 @@ div.notiflayer{
   min-height: 30px;
   padding:15px 0 5px 0;
   background-color: rgba(28, 111, 101, 1);
-  width: 100%;
-  left: 0;
 }
 div.notiflayer ul{
   width:85%;
