@@ -1,6 +1,4 @@
 *{
-  /* margin:0px;
-  padding:0px; */
   font-family: "Arial";
 }
 body{
@@ -42,6 +40,7 @@ div.qod span.quote{
   height:42px;
   overflow:scroll;
   font-size: 14px;
+  line-height:20px;
 }
 div.qod span.author{
   float:right;
@@ -103,7 +102,6 @@ div.serp{
   border-radius:1px;
   position:absolute;
   left:2.5%;
-  /* bottom:150px; */
 }
 div.showpromise{
   font-size:13px;
@@ -118,7 +116,6 @@ div.showpromise,div.editbox,div.histories{
 }
 div.timeinfo{
   position:absolute;
-  /* bottom:35px; */
   width:95%;
   height:100px;
   font-family: arial;
@@ -143,7 +140,6 @@ span.time{
 }
 div.button{
   position:absolute;
-  /* bottom:0px; */
   width:100%;
   height:45px;
 }
@@ -160,6 +156,52 @@ div.sorry,div.mdone{
 }
 div.sorry{
   color:#ec4448;
+}
+div.hoverlayer,div.notiflayer{
+  position:fixed;
+  width:96%;
+  left:2%;
+  font-size:15px;
+  min-height:100%;
+  background-color:rgba(0,0,0,0.9);
+  text-align:center;
+  color:white;
+  z-index:200;
+  padding-top:280px;
+  word-wrap:break-all;
+  white-space:normal;
+}
+div.notiflayer{
+  min-height: 30px;
+  padding:15px 0 5px 0;
+  background-color: rgba(28, 111, 101, 1);
+  width: 100%;
+  left: 0;
+}
+div.notiflayer ul{
+  width:85%;
+  text-align:left;
+  list-style:none;
+  padding-left:30px;
+}
+div.notiflayer span{
+  display:block;
+  width: 25px;
+  height: 20px;
+  background-color: rgb(206, 52, 52);
+  float: right;
+  font-size: 12px;
+  text-align: center;
+}
+div.notiflayer span:hover{
+  background-color: rgb(162, 49, 49);
+}
+div.notiflayer li:before {
+  content: "*";
+  color: #FFFF00;
+  padding-right: .2em;
+  font-size: 1.5em;
+  vertical-align: -0.34em;
 }
 div.setddl,div.save,div.savetime{
   position:absolute;
@@ -216,7 +258,7 @@ div.oldpromise ul.items{
   width:100%;
   font-size:15px;
 }
-div.oldpromise li{
+ul.items li{
   margin:0;
   padding:0;
   position:relative;
@@ -234,10 +276,10 @@ div.summary{
   text-overflow:ellipsis;
   overflow:hidden;
 }
-div.oldpromise li span{
+ul.items li span{
   float:left;
 }
-div.oldpromise li span:nth-child(2){
+ul.items li span:nth-child(2){
   float:right;
   text-transform:uppercase;
 }
@@ -283,6 +325,11 @@ div.done,div.fail,div.delay{
   top:7px;
   height:1px;
 }
+div.review{
+  background-color: rgba(42, 38, 38, 1);
+  padding-left: 5px;
+  display:none;
+}
 h1,h2,h3,h4,h5,h6,p,blockquote {
   margin: 0;
   padding: 0;
@@ -291,20 +338,25 @@ body {
   font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 10px 13px 10px 13px;
+  /* margin: 10px 13px 10px 13px; */
+  margin:0;
 }
-div.cupromise ul,div.addpromise ul {
+/* div.cupromise ul,div.addpromise ul { */
+div.showbox ul{
   padding-left: 0;
   margin-bottom: 0;
   margin-top:0;
 }
-div.cupromise li ul,div.addpromise li ul {
+/* div.cupromise li ul,div.addpromise li ul { */
+div.showbox li ul{
   padding-left: 20px;
 }
-div.cupromise ul li,div.addpromise ul li{
+/* div.cupromise ul li,div.addpromise ul li{ */
+div.showbox ul li{
   list-style:none;
 }
-div.cupromise ul li:before,div.addpromise ul li:before {
+/* div.cupromise ul li:before,div.addpromise ul li:before { */
+div.showbox ul li:before{
   content: "* ";
   color: #FFFF00;
   padding-right: .2em;

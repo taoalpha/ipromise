@@ -9,11 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" media="all" />
     <script type="text/javascript" src='js/jquery-1.10.1.min.js'></script>
-    <script type="text/javascript" src='js/jquery.blockUI.js'></script>
     <script type="text/javascript" src='js/bootstrap.min.js'></script>
     <script type="text/javascript" src='js/bootstrap-datetimepicker.min.js'></script>
     <script type="text/javascript" src='js/jquery.storageapi.min.js'></script>
-
     <script type="text/javascript" src='js/markdown.js'></script>
     <script type="text/javascript" src='js/main.js'></script>
 </head>
@@ -33,7 +31,7 @@
             <div class="title"><b>i</b> Promise</div>
             <div class="right"></div>
         </div>
-        <div class="showpromise"></div>
+        <div class="showpromise showbox"></div>
         <div class="serp"></div>
         <div class="timeinfo">
             <div class="ddl">
@@ -46,8 +44,8 @@
             </div>
         </div>
         <div class="button">
-            <div class="sorry">Sorry</div>
-            <div class="mdone">Done</div>
+            <div class="sorry" data-name="msorry">Sorry</div>
+            <div class="mdone" data-name="mdone">Done</div>
         </div>
     </div>
     <div class="addpromise">
@@ -57,7 +55,7 @@
             <div class="right"></div>
         </div>
         <div class="editbox">
-            <div class="helpuse">
+            <div class="helpuse showbox">
               <h2>How to use iPromise?</h2>
               <ul>
                 <li>Basic:
@@ -97,6 +95,7 @@ Any advice, please [Email me](mailto:zzgary92@gmail.com) .</textarea>
         </div>
         <div class="histories">
             <ul class="items"></ul>
+            <div class="review showbox"></div>
         </div>
         <div class="savetime">Saved Time:
             <span>0 days</span>

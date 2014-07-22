@@ -11,11 +11,13 @@ if(flagpart){
 }else{
   storage = $.localStorage;
 }
+popcount = 0;
+undones = {};
 $(document).ready(function(){
     if($(window).width()>500){
         var popUp = window.open('index.html', 'newwindow', 'height=568, width=320, top=50, left=500, toolbar=no, menubar=no, resizable=no,location=no, status=no');
         if (popUp == null || typeof(popUp)=='undefined') {
-            // alert('Please disable your pop-up blocker and click the "Open" link again.');
+            showpop('Please disable your pop-up blocker and click the "Open" link again.');
         }
         else {
             popUp.focus();
@@ -58,6 +60,47 @@ $(document).ready(function(){
     $('div.helpuse').on('click',function(){
       $(this).hide();
       $('#newpromise').css('display','block')
+      $('#newpromise').trigger('click');
+    });
+    $('#newpromise').on('click',function(){
+      if(flagpart){
+        storage.get("undones", function(data) {
+            if(data.undones){
+              var mes = "All delayed Items: <ul>";
+              $.each(data.undones,function(i,v){
+                if(v>0){
+                  mes += "<li>"+i+"<span>Del</span></li>";
+                }
+              })
+              if(mes!="All delayed Items: <ul>"){
+                notifshow(mes+"</ul>");
+              }
+            }
+        });
+      }else{
+        var data = storage.get('undones');
+        if(data){
+            if(data){
+              var mes = "All delayed Items: <ul>";
+              $.each(data,function(i,v){
+                if(v>0){
+                  mes += "<li>"+i+"<span>Del</span></li>";
+                }
+              })
+              if(mes!="All delayed Items: <ul>"){
+                notifshow(mes+"</ul>");
+              }
+            }
+        }
+      }
+    })
+    $('body').on('click','div.notiflayer span',function(){
+      var key = $(this).closest('li').text().replace('Del','');
+      savesingle("undones",key,0);
+      $(this).closest('li').fadeOut(500).remove();
+      if($('div.notiflayer').find('li').length==0){
+        $('div.notiflayer').hide();
+      }
     });
     $('div.save').on('click',function(){
         var cupromise = {};
@@ -70,108 +113,36 @@ $(document).ready(function(){
         storage.set({"currentpromise":cupromise});
         $('div.addpromise').fadeOut(800).siblings('div.cupromise').fadeIn(800);
         showcur(cupromise);
+        $('div.notiflayer').hide();
     });
     // DONE: log some information for checkbox in localstorage.
     $('div.showpromise').on('click','input',function(){
       var mark = ($(this).prop('checked'))?1:0;
       var imark = $('input').index($(this));
-      if(flagpart){
-        storage.get("marks", function(data) {
-          if(Object.keys(data).length==0){
-            data[imark] = mark;
-            storage.set({"marks":data});
-          }else{
-            // console.log(data);
-            data['marks'][imark] = mark;
-            storage.set({"marks":data.marks});
+      savesingle("marks",imark,mark);
+    });
+    // move promise to history
+    $('div.button').on('click','div',function(){
+      // DONE: add a check part--for todo list.
+      // TODO: Rule 1: Delay item need automatic added to next promise and never should delay for 3 times.
+      var flag = $(this).attr('data-name');
+      // var dateflag = (new Date()).toISOString();
+      if($('div.showpromise input[type=checkbox]').length>0){
+        var i = 0;
+        $.each($('div.showpromise input[type=checkbox]'),function(index,v){
+          if(!$(v).prop('checked')){
+            i++;
           }
-        })
-      }else{
-        var data = storage.get("marks");
-        if(data==null){
-          data[imark] = mark;
-          storage.set({"marks":data});
-        }else{
-          // console.log(data);
-          data[imark] = mark;
-          storage.set({"marks":data});
-        }
-      }
-    });
-    // mark done
-    $('div.mdone').on('click',function(){
-      if(flagpart){
-        storage.get("currentpromise", function(data) {
-            kk = data.currentpromise;
-            if(Date.parse(kk.deadline)-Date.parse(Date())>=0){
-                kk.status = "done";
-            }else{
-                kk.status = "delay";
-            }
-            kk.closetime = Date();
-            storage.get("historypromise", function(data2) {
-                var his = data2.historypromise;
-                if(his == null){his = []};
-                his.push(kk);
-                storage.set({"historypromise":his}, function() {
-                    console.log('saved to history.')
-                    storage.remove("currentpromise", function() {
-                        console.log('removed the current.')
-                        $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
-                    });
-                });
-            });
         });
-      }else{
-        var kk = storage.get("currentpromise");
-        if(Date.parse(kk.deadline)-Date.parse(Date())>=0){
-            kk.status = "done";
+        if(i>0 && flag=="mdone" && popcount<2){
+          showpop("You have "+i+" "+(i==1?"item":"items")+" did not mark as done. Try "+(2-popcount)+" more times to skip it.");
+          popcount ++;
         }else{
-            kk.status = "delay";
+          gotohistory(flag);
         }
-        kk.closetime = Date();
-        var his = storage.get("historypromise");
-        if(his == null){his = {}};
-        var i = Object.keys(his).length;
-        his[i] = kk;
-        storage.set({"historypromise":his});
-        storage.remove("currentpromise");
-        $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
-      }
-      storage.remove("marks");
-    });
-    $('div.sorry').on('click',function(){
-      if(flagpart){
-        storage.get("currentpromise", function(data) {
-            var kk = data.currentpromise;
-            kk.status = "fail";
-            kk.closetime = Date();
-            storage.get("historypromise", function(data2) {
-                var his = data2.historypromise;
-                if(his == null){his = []};
-                his.push(kk);
-                storage.set({"historypromise":his}, function() {
-                    console.log('saved to history.')
-                    storage.remove("currentpromise", function() {
-                        console.log('removed the current.')
-                        $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
-                    });
-                });
-            });
-        });
       }else{
-        var kk = storage.get("currentpromise");
-        kk.status = "fail";
-        kk.closetime = Date();
-        var his = storage.get("historypromise");
-        if(his == null){his = {}};
-        var i = Object.keys(his).length;
-        his[i] = kk;
-        storage.set({"historypromise":his});
-        storage.remove("currentpromise");
-        $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
+        gotohistory(flag);
       }
-        storage.remove("marks");
     });
     $('div.cupromise').on('click','div.right,div.left',function(){
         $('div.cupromise').fadeOut(500).siblings('div.oldpromise').fadeIn(800);
@@ -226,16 +197,31 @@ $(document).ready(function(){
         showhis();
       }
     });
-    //TODO: add review for history item.
+    //DONE: add review for history item.
     $('div.histories').on('click','ul.items li',function(){
-        $('div.review').show();
+        $('div.review').toggle();
+        $(this).siblings().toggle();
+        var index = $('div.histories ul.items li').index($(this));
         if(flagpart){
           storage.get("historypromise", function(data) {
               var his = data.historypromise;
-
+              if(his[index].content.indexOf("MD:")==0){
+                var converter = new Markdown.Converter(),
+                    markdownToHtml = converter.makeHtml;
+                $('div.review').html(markdownToHtml(his[index].content.replace("MD:","")));
+              }else{
+                $('div.review').html(his[index].content.replace(/\n/g,"\<br\>"));
+              }
           });
         }else{
           var data = storage.get("historypromise");
+          if(data[index].content.indexOf("MD:")==0){
+            var converter = new Markdown.Converter(),
+                markdownToHtml = converter.makeHtml;
+            $('div.review').html(markdownToHtml(data[index].content.replace("MD:","")));
+          }else{
+            $('div.review').html(data[index].content.replace(/\n/g,"\<br\>"));
+          }
         }
     });
     // update the ddl time information
@@ -305,6 +291,7 @@ function showmarks(){
   }
 }
 function showhis(){
+    $('div.review').hide();
     $('ul.items').empty();
     if(flagpart){
       storage.get("historypromise", function(data) {
@@ -345,24 +332,6 @@ function showhis(){
     }
 }
 
-function showpop(mes){
-    $.blockUI({
-        message: mes,
-        css: {
-            left:'15%',
-            width:'180px',
-            border: 'none',
-            padding: '5px',
-            backgroundColor: '#000',
-            '-webkit-border-radius': '10px',
-            '-moz-border-radius': '10px',
-            opacity: .95,
-            font:'22px arial',
-            color: 'red'
-        }
-    });
-    setTimeout($.unblockUI, 2000);
-}
 function showquotes(){
   if(flagpart){
     storage.get("dailyquote", function(data) {
@@ -395,6 +364,134 @@ function showquotes(){
             $('span.author').html(quote.contents.author);
             storage.set({"dailyquote":quote});
         })
+    }
+  }
+}
+
+function gotohistory(status){
+  $.each($('div.showpromise input[type=checkbox]'),function(index,v){
+    if(!$(v).prop('checked')){
+      var unitem = $(v).next('span').text();
+      savesingle("undones",unitem,1);
+    }
+    // FIXME: Can not save multiple items at the same time...
+  });
+  if(flagpart){
+    storage.get("currentpromise", function(data) {
+        kk = data.currentpromise;
+        if(status=="mdone"){
+          if(Date.parse(kk.deadline)-Date.parse(Date())>=0){
+              kk.status = "done";
+          }else{
+              kk.status = "delay";
+          }
+        }else if(status == "msorry"){
+          kk.status = "fail";
+        }
+        kk.closetime = Date();
+        kk.marks = typeof(marks)=="undefined"?"":marks;
+        storage.get("historypromise", function(data2) {
+            var his = data2.historypromise;
+            if(his == null){his = []};
+            his.push(kk);
+            storage.set({"historypromise":his}, function() {
+                console.log('saved to history.')
+                storage.remove("currentpromise", function() {
+                    console.log('removed the current.')
+                    $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
+                });
+            });
+        });
+    });
+  }else{
+    var kk = storage.get("currentpromise");
+    if(status=="mdone"){
+      if(Date.parse(kk.deadline)-Date.parse(Date())>=0){
+          kk.status = "done";
+      }else{
+          kk.status = "delay";
+      }
+    }else if(status == "msorry"){
+      kk.status = "fail";
+    }
+    kk.closetime = Date();
+    kk.marks = typeof(marks)=="undefined"?"":marks
+    var his = storage.get("historypromise");
+    if(his == null){his = {}};
+    var i = Object.keys(his).length;
+    his[i] = kk;
+    storage.set({"historypromise":his});
+    storage.remove("currentpromise");
+    $('div.cupromise').fadeOut(500).siblings('div.addpromise').fadeIn(800);
+  }
+
+  storage.remove("marks");
+}
+
+function showpop(mes){
+  var meslayer = "<div class=hoverlayer>"+mes+"</div>";
+  $('body').append(meslayer);
+  $('div.hoverlayer').css("padding-top",$(window).height()/2-50);
+  setTimeout(function(){
+    $('div.hoverlayer').fadeOut(500).remove();
+  },2000);
+}
+
+function notifshow(mes){
+  var meslayer = "<div class=notiflayer>"+mes+"</div>";
+  $('body').append(meslayer);
+}
+
+
+function savesingle(itemname,index,value){
+  if(flagpart){
+    storage.get(itemname, function(data) {
+      if(Object.keys(data).length==0){
+        data[index] = value;
+        if(itemname=="marks"){
+          storage.set({"marks":data});
+          marks = data;
+        }
+        if(itemname=="undones"){
+          storage.set({"undones":data});
+          undones = data;
+        }
+      }else{
+        // console.log(data);
+        data[itemname][index] = value;
+        if(itemname=="marks"){
+          storage.set({"marks":data[itemname]});
+          marks = data[itemname];
+        }
+        if(itemname=="undones"){
+          storage.set({"undones":data[itemname]});
+          undones = data[itemname];
+        }
+      }
+    })
+  }else{
+    var data = storage.get(itemname);
+    if(data==null){
+      data[index] = value;
+      if(itemname=="marks"){
+        storage.set({"marks":data});
+        marks = data;
+      }
+      if(itemname=="undones"){
+        storage.set({"undones":data});
+        undones = data;
+      }
+    }else{
+      // console.log(data);
+      data[index] = value;
+      if(itemname=="marks"){
+        storage.set({"marks":data});
+        marks = data;
+      }
+      if(itemname=="undones"){
+        storage.set({"undones":data});
+        undones = data;
+      }
     }
   }
 }

@@ -6,51 +6,6 @@ if (typeof exports === "object" && typeof require === "function") // we're in a 
 else
     Markdown = {};
 
-// The following text is included for historical reasons, but should
-// be taken with a pinch of salt; it's not all true anymore.
-
-//
-// Wherever possible, Showdown is a straight, line-by-line port
-// of the Perl version of Markdown.
-//
-// This is not a normal parser design; it's basically just a
-// series of string substitutions.  It's hard to read and
-// maintain this way,  but keeping Showdown close to the original
-// design makes it easier to port new features.
-//
-// More importantly, Showdown behaves like markdown.pl in most
-// edge cases.  So web applications can do client-side preview
-// in Javascript, and then build identical HTML on the server.
-//
-// This port needs the new RegExp functionality of ECMA 262,
-// 3rd Edition (i.e. Javascript 1.5).  Most modern web browsers
-// should do fine.  Even with the new regular expression features,
-// We do a lot of work to emulate Perl's regex functionality.
-// The tricky changes in this file mostly have the "attacklab:"
-// label.  Major or self-explanatory changes don't.
-//
-// Smart diff tools like Araxis Merge will be able to match up
-// this file with markdown.pl in a useful way.  A little tweaking
-// helps: in a copy of markdown.pl, replace "#" with "//" and
-// replace "$text" with "text".  Be sure to ignore whitespace
-// and line endings.
-//
-
-
-//
-// Usage:
-//
-//   var text = "Markdown *rocks*.";
-//
-//   var converter = new Markdown.Converter();
-//   var html = converter.makeHtml(text);
-//
-//   alert(html);
-//
-// Note: move the sample code to the bottom of this
-// file before uncommenting it.
-//
-
 (function () {
 
     function identity(x) { return x; }
@@ -833,9 +788,9 @@ else
             text = text.replace(/\[([ \tx]?)\](.+?)[ \t]*\n+/gm,
                 function (wholeMatch,m1,m2) {
                     if(m1 == 'x'){
-                      return "<input type=checkbox checked>" + m2 +"\n";
+                      return "<input type=checkbox checked><span>" + m2 +"</span>\n";
                     }else if(m1==' ' || m1 == ''){
-                      return "<input type=checkbox>" + m2 +"\n";
+                      return "<input type=checkbox><span>" + m2 +"</span>\n";
                     }else{
                       return wholeMatch;
                     }

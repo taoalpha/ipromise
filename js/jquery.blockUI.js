@@ -125,9 +125,9 @@
 			css: {
 				padding:	0,
 				margin:		0,
-				width:		'30%',
+				width:		'80%',
 				top:		'40%',
-				left:		'35%',
+				left:		'5%',
 				textAlign:	'center',
 				color:		'#000',
 				border:		'3px solid #aaa',
@@ -137,9 +137,9 @@
 
 			// minimal style set used when themes are used
 			themedCSS: {
-				width:	'30%',
+				width:	'80%',
 				top:	'40%',
-				left:	'35%'
+				left:	'5%'
 			},
 
 			// styles for the overlay
